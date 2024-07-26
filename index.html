@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="image/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <title>ጉዞ-Ethiopia</title>
+    <style>
+      @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-100%); }
+      }
+
+      .scrolling {
+          display: flex;
+          animation: scroll 20s linear infinite;
+      }
+      #about-us img, 
+  #about-us h2, 
+  #about-us p {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  #about-us img {
+    transition: opacity 1s ease-out;
+  }
+
+  #about-us h2 {
+    transition: opacity 0.7s ease-out 0.3s, transform 0.7s ease-out 0.3s;
+  }
+
+  #about-us p {
+    transition: opacity 0.7s ease-out 0.6s, transform 0.7s ease-out 0.6s;
+  }
+
+  #about-us.loaded img,
+  #about-us.loaded h2,
+  #about-us.loaded p {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #home {
+  transition: opacity 1s ease-in-out;
+  background-image: url('image/axum.png');
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+
+#home.fade::before {
+  opacity: 1;
+}
+
+  </style>
+</head>
+<body>
+    <header class="bg-black fixed top-0 left-0 w-full z-50">
+        <nav class="container relative h-14 flex justify-between items-center">
+            <div>
+                <a class="text-2xl uppercase font-oswald text-white ml-9 font-bold" href="">ጉዞ-<span class="text-green-400">Ethiopia</span></a>
+            </div> 
+            <div class="hidden absolute top-0 left-0 w-full py-14 bg-black border-b border-green-400  md:block md:static md:py-0 md:border-none md:w-auto md:ml-auto" id="nav-menu">
+                <ul class="flex flex-col text-center gap-3 md:flex-row">
+                    <li><a href="#home" class="nav-link text-white p-1 px-10 text-xl transition duration-200 active:bg-green-500 active:rounded-sm hover:bg-green-500 hover:rounded-sm">Home</a></li> 
+                    <li><a href="#sites" class="nav-link text-white p-1 px-10 text-xl transition duration-200 active:bg-green-500 active:rounded-sm hover:bg-green-500 hover:rounded-sm">Sites</a></li>                                     
+                    <li><a href="#service" class="nav-link text-white p-1 px-10 text-xl transition duration-200 active:bg-green-500 active:rounded-sm hover:bg-green-500 hover:rounded-sm">Service</a></li>
+                    <li><a href="" class="nav-link text-white p-1 px-10 text-xl transition duration-200 active:bg-green-500 active:rounded-sm hover:bg-green-500 hover:rounded-sm">Contact-us</a></li>
+                    <li><a href="" class="nav-link text-white p-1 px-10 text-xl transition duration-200 active:bg-green-500 active:rounded-sm hover:bg-green-500 hover:rounded-sm">About-us</a></li>
+                </ul>
+
+                <div class="absolute top-3 right-4 text-2xl cursor-pointer md:hidden" id="nav-close">
+                    <i class="ri-close-line text-white text-2xl"></i>
+                </div>
+            </div>
+            <div class="flex items-center gap-5 md:hidden">
+                <div class="md:hidden" id="hamburger">
+                    <i class="ri-menu-2-line text-white"></i>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- <section id="landing" class="relative">
+        <div class="carousel w-screen h-screen overflow-hidden relative">
+            <div class="list flex relative">
+                <div class="item bg-cover absolute top-0 left-0 w-full h-full" style="background-image: url('image/lalibela.jpg');"></div>
+                <div class="item bg-cover absolute top-0 left-0 w-full h-full" style="background-image: url('image/simen.jpg');"></div>
+                <div class="item bg-cover absolute top-0 translate-y-0 left-[67%]" style="background-image: url('image/axum.jpg');"></div>
+                <div class="item bg-cover absolute top-0 translate-y-0 left-[calc(67%+200px)]" style="background-image: url('image/harar.jpg');"></div>
+                <div class="item bg-cover absolute top-0 translate-y-0 left-[calc(67%+400px)]" style="background-image: url('image/gonder.jpg');"></div>
+                <div class="item bg-cover absolute top-0 translate-y-0 left-[calc(67%+600px)]" style="background-image: url('image/lalibela.jpg');"></div>
+            </div>
+        </div>
+    </section> -->
+    <section id="home" class="h-screen bg-cover bg-center transition-opacity duration-1000 ease-in-out" style="background-image: url('image/simen.png');">
+        <div class="flex items-center justify-center w-full h-full bg-black bg-opacity-50">
+            <div class="text-left p-2 rounded-lg flex flex-col space-y-4 max-w-3xl">
+                <h1 class="text-xl md:text-2xl text-white">Welcome to Our Tour and Travel</h1>
+                <h2 class="text-4xl md:text-6xl text-white font-bold">Explore Ethiopia</h2>
+                <p class="text-base md:text-xl text-white">Discover the beautiful landscapes, rich culture, and historic sites of Ethiopia. Experience unforgettable moments and create lifelong memories with our curated travel packages.</p>
+                <button class="mt-4 w-40 p-2 bg-green-400 text-white font-bold rounded-lg hover:bg-white hover:text-black  transition duration-300 ease-in-out">Start with Us</button>
+            </div>
+        </div>
+    </section>
+    <!-- <section id="places">
+      <div class="flex flex-col min-h-screen items-center justify-center bg-neutral-800">
+          <div>
+              <h1 class="mt-6 text-black text-center text-5xl font-bold">Place <span class="text-green-700">to visit</span></h1>
+              
+          </div>
+          <div class="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+              <div class="h-96 w-72">
+                <img class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125 rounded-xl" src="image/lalibela.png" alt="" />
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+              <div class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+                <h1 class="font-dmserif text-3xl font-bold text-white">Lalibela</h1>
+                <p class="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"> Historic rock-hewn churches. </p>
+              </div>
+            </div>
+            <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+              <div class="h-96 w-72">
+                <img class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125 rounded-xl" src="image/axum.png" alt="" />
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+              <div class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+                <h1 class="font-dmserif text-3xl font-bold text-white">Axum</h1>
+                <p class="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Ancient capital with obelisks.</p>
+              </div>
+            </div>
+            <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+              <div class="h-96 w-72">
+                <img class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125 rounded-xl" src="image/gonder.png" alt="" />
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+              <div class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+                <h1 class="font-dmserif text-3xl font-bold text-white">Gonder</h1>
+                <p class="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">17th-century castles and churches.</p>
+              </div>
+            </div>
+            <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+              <div class="h-96 w-72">
+                <img class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125 rounded-xl" src="image/harar.png" alt="" />
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+              <div class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+                <h1 class="font-dmserif text-3xl font-bold text-white">Harar</h1>
+                <p class="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Walled Islamic city.</p>
+              </div>
+            </div>
+            <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+              <div class="h-96 w-72">
+                <img class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125 rounded-xl" src="image/simen.png" alt="" />
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+              <div class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+                <h1 class="font-dmserif text-3xl font-bold text-white">Simen-Mountains</h1>
+                <p class="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Rugged highlands with unique wildlife.</p>
+              </div>
+            </div>
+            <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+              <div class="h-96 w-72">
+                <img class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125 rounded-xl" src="image/abay.png" alt="" />
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+              <div class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+                <h1 class="font-dmserif text-3xl font-bold text-white">Abay</h1>
+                <p class="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Ethiopia's major river, flowing into the Nile.</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+    </section> -->
+  <section id="sites" >
+    <div class="flex flex-col min-h-screen items-center justify-center bg-neutral-800 p-8">
+      <div class="relative p-2 bg-neutral-900 border border-gray-700 rounded-xl shadow-lg">
+        <!-- Content -->
+        <h1 class="mt-6 text-black text-center text-5xl font-bold">Place <span class="text-green-700">to visit</span></h1>
+  
+        <div class="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+         
+          <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 p-4">
+            <div class="relative h-96 w-72 rounded-xl overflow-hidden">
+              <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-xl" src="image/lalibela.png" alt="">
+  
+              <button class="absolute top-2 right-2 text-red-500 hover:text-red-700 transition ease-in-out">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+              </button>
+            </div>
+  
+            <!-- Info Container -->
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-3 w-11/12 bg-white bg-opacity-80 p-4 rounded-b-xl shadow-md transition-all duration-300 ease-in-out ">
+              <h1 class="font-bold text-xl">Lalibela</h1>
+              <p class="text-gray-600">Historic rock-hewn churches.</p>
+              <div class="flex items-center mt-2">
+                <span class="text-yellow-400">
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                </span>
+              </div>
+              <button class="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300 ease-in-out">Book Now</button>
+            </div>
+          </div>
+
+
+          <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 p-4">
+            <div class="relative h-96 w-72 rounded-xl overflow-hidden">
+              <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-xl" src="image/simen.png" alt="">
+  
+              <button class="absolute top-2 right-2 text-red-500 hover:text-red-700 transition ease-in-out">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+              </button>
+            </div>
+  
+            <!-- Info Container -->
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-3 w-11/12 bg-white bg-opacity-80 p-4 rounded-b-xl shadow-md transition-all duration-300 ease-in-out ">
+              <h1 class="font-bold text-xl">Simen-Mountains</h1>
+              <p class="text-gray-600">Rugged highlands with unique wildlife.</p>
+              <div class="flex items-center mt-2">
+                <span class="text-yellow-400">
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                </span>
+              </div>
+              <button class="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300 ease-in-out">Book Now</button>
+            </div>
+          </div>
+
+
+
+          <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 p-4">
+            <div class="relative h-96 w-72 rounded-xl overflow-hidden">
+              <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-xl" src="image/axum.png" alt="">
+  
+              <button class="absolute top-2 right-2 text-red-500 hover:text-red-700 transition ease-in-out">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+              </button>
+            </div>
+  
+            <!-- Info Container -->
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-3 w-11/12 bg-white bg-opacity-80 p-4 rounded-b-xl shadow-md transition-all duration-300 ease-in-out ">
+              <h1 class="font-bold text-xl">Axum</h1>
+              <p class="text-gray-600">Ancient capital with obelisks.</p>
+              <div class="flex items-center mt-2">
+                <span class="text-yellow-400">
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                </span>
+              </div>
+              <button class="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300 ease-in-out">Book Now</button>
+            </div>
+          </div>
+
+
+          <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 p-4">
+            <div class="relative h-96 w-72 rounded-xl overflow-hidden">
+              <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-xl" src="image/abay.png" alt="">
+  
+              <button class="absolute top-2 right-2 text-red-500 hover:text-red-700 transition ease-in-out">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+              </button>
+            </div>
+  
+            <!-- Info Container -->
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-3 w-11/12 bg-white bg-opacity-80 p-4 rounded-b-xl shadow-md transition-all duration-300 ease-in-out ">
+              <h1 class="font-bold text-xl">Abay</h1>
+              <p class="text-gray-600">Ethiopia's major river, flowing into the Nile.</p>
+              <div class="flex items-center mt-2">
+                <span class="text-yellow-400">
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                </span>
+              </div>
+              <button class="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300 ease-in-out">Book Now</button>
+            </div>
+          </div>
+
+
+          <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 p-4">
+            <div class="relative h-96 w-72 rounded-xl overflow-hidden">
+              <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-xl" src="image/harar.png" alt="">
+  
+              <button class="absolute top-2 right-2 text-red-500 hover:text-red-700 transition ease-in-out">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+              </button>
+            </div>
+  
+            <!-- Info Container -->
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-3 w-11/12 bg-white bg-opacity-80 p-4 rounded-b-xl shadow-md transition-all duration-300 ease-in-out ">
+              <h1 class="font-bold text-xl">Harar</h1>
+              <p class="text-gray-600">Walled Islamic city.</p>
+              <div class="flex items-center mt-2">
+                <span class="text-yellow-400">
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                </span>
+              </div>
+              <button class="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300 ease-in-out">Book Now</button>
+            </div>
+          </div>
+
+          <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 p-4">
+            <div class="relative h-96 w-72 rounded-xl overflow-hidden">
+              <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-xl" src="image/gonder.png" alt="">
+  
+              <button class="absolute top-2 right-2 text-red-500 hover:text-red-700 transition ease-in-out">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+              </button>
+            </div>
+  
+            <!-- Info Container -->
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-3 w-11/12 bg-white bg-opacity-80 p-4 rounded-b-xl shadow-md transition-all duration-300 ease-in-out ">
+              <h1 class="font-bold text-xl">Gonder</h1>
+              <p class="text-gray-600">17th-century castles and churches.</p>
+              <div class="flex items-center mt-2">
+                <span class="text-yellow-400">
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L17.91 22 12 18.27 6.09 22 7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                </span>
+              </div>
+              <button class="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300 ease-in-out">Book Now</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="service" class="bg-gray-100">
+    <div class="container mx-auto p-8 flex flex-col">
+      <h1 class="font-bold text-black text-4xl">Services</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+          
+          <div class="flex flex-col items-center text-center bg-white p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-gray-100 hover:shadow-2xl">
+              <i class="fas fa-bed text-green-500 text-4xl mb-4 transition-colors hover:text-green-500"></i>
+              <h2 class="text-xl font-bold mb-2 text-gray-800 transition-colors hover:text-yellow-500">Hotel Package</h2>
+              <p class="text-gray-600 hover:text-red-700">Enjoy a comfortable stay at our selected hotels.</p>
+          </div>
+  
+          
+          <div class="flex flex-col items-center text-center bg-white p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-gray-100 hover:shadow-2xl">
+              <i class="fas fa-plane text-green-500 text-4xl mb-4 transition-colors hover:text-green-500"></i>
+              <h2 class="text-xl font-bold mb-2 text-gray-800 transition-colors hover:text-yellow-500">Airline Ticket</h2>
+              <p class="text-gray-600 hover:text-red-700">Fly to your destination with ease and convenience.</p>
+          </div>
+  
+          
+          <div class="flex flex-col items-center text-center bg-white p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-gray-100 hover:shadow-2xl">
+              <i class="fas fa-utensils text-green-500 text-4xl mb-4 transition-colors hover:text-green-500"></i>
+              <h2 class="text-xl font-bold mb-2 text-gray-800 transition-colors hover:text-yellow-500">Food Package</h2>
+              <p class="text-gray-600 hover:text-red-700">Savor delicious meals throughout your trip.</p>
+          </div>
+  
+         
+          <div class="flex flex-col items-center text-center bg-white p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-gray-100 hover:shadow-2xl">
+              <i class="fas fa-camera text-green-500 text-4xl mb-4 transition-colors hover:text-green-700"></i>
+              <h2 class="text-xl font-bold mb-2 text-gray-800 transition-colors hover:text-yellow-700">Photo Shoot Package</h2>
+              <p class="text-gray-600 hover:text-red-700">Capture beautiful moments with our professional photo services.</p>
+          </div>
+      </div>
+  </div>
+  </section>
+  <section id="testimony" class="overflow-hidden font-oswald ">
+    <h2 class="text-4xl text-center sm:text-2xl mt-20 font-bold text-green-700">Testimony</h2>
+    <div class="mt-10 flex items-center justify-center relative overflow-hidden">
+        <ul class="scrolling flex gap-8">
+          <li class="flex-shrink-0 flex flex-col items-center w-48">
+            <img class="rounded-full w-40 h-40" src="image/f.jpg" alt="Testimonial 3">
+            <p class="mt-2 text-center text-xl">The accommodations were charming and well-located, really appreciated.</p>
+        </li>
+            <li class="flex-shrink-0 flex flex-col items-center w-48">
+                <img class="rounded-full w-40 h-40" src="image/images-9.jpeg" alt="Testimonial 1">
+                <p class="mt-2 text-center text-xl">I contacted the agency, demonstrated professionalism and attention to detail.</p>
+            </li>
+            <li class="flex-shrink-0 flex flex-col items-center w-48">
+                <img class="rounded-full w-40 h-40" src="image/Unknown-11.jpeg" alt="Testimonial 2">
+                <p class="mt-2 text-center text-xl">The aspects I appreciated most was the agent's responsiveness and communication.</p>
+            </li>
+            <li class="flex-shrink-0 flex flex-col items-center w-48">
+                <img class="rounded-full w-40 h-40" src="image/images-8.jpeg" alt="Testimonial 3">
+                <p class="mt-2 text-center text-xl">The accommodations were charming and well-located, really appreciated.</p>
+            </li>
+            <li class="flex-shrink-0 flex flex-col items-center w-48">
+                <img class="rounded-fullw-40 h-40" src="image/images-7.jpeg" alt="Testimonial 4">
+                <p class="mt-2 text-center text-xl">Answered my questions, provided recommendations, and made any necessary adjustments.</p>
+            </li>
+            <li class="flex-shrink-0 flex flex-col items-center w-48">
+              <img class="rounded-full w-40 h-40" src="image/e.jpg" alt="Testimonial 2">
+              <p class="mt-2 text-center text-xl">The aspects I appreciated most was the agent's responsiveness and communication.</p>
+          </li>
+            <li class="flex-shrink-0 flex flex-col items-center w-48">
+                <img class="rounded-full w-40 h-40" src="image/Unknown-14.jpeg" alt="Testimonial 5">
+                <p class="mt-2 text-center text-xl">Their expertise, attention to detail, and commitment to customer satisfaction.</p>
+            </li>
+            <li class="flex-shrink-0 flex flex-col items-center w-48">
+              <img class="rounded-full w-40 h-40" src="image/d.jpg" alt="Testimonial 1">
+              <p class="mt-2 text-center text-xl">I contacted the agency, demonstrated professionalism and attention to detail.</p>
+          </li>
+        </ul>
+    </div>
+</section>
+
+<section id="contact-us" class="py-16 bg-white bg-gray-100">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row">
+      <!-- Contact Information -->
+      <div class="md:w-1/2 mb-8 md:mb-0 bg-white p-6 rounded">
+        <h2 class="text-3xl font-bold mb-4 transition-transform duration-300 transform hover:scale-105">Get in touch</h2>
+        <div class="flex items-center mb-4">
+          <!-- Email Icon -->
+          <i class="fas fa-envelope w-6 h-6 text-gray-700 mr-3"></i>
+          <p class="text-lg text-gray-700">Email: <a href="mailto:info@example.com" class="text-gray-700 hover:underline">traavel@guzoethiopia.com</a></p>
+        </div>
+        <div class="flex items-center mb-4">
+          <!-- Phone Icon -->
+          <i class="fas fa-phone w-6 h-6 text-gray-700 mr-3"></i>
+          <p class="text-lg text-gray-700">Phone: <a href="tel:+1234567890" class="text-gray-700 hover:underline">(123) 456-7890</a></p>
+        </div>
+        <div class="flex items-center mb-4">
+          <!-- Address Icon -->
+          <i class="fas fa-map-marker-alt w-6 h-6 text-gray-700 mr-3"></i>
+          <p class="text-lg text-gray-700">Address: 22 golagul, Addis Ababa, Ethiopia</p>
+        </div>
+        <!-- Social Media Icons -->
+        <div class="flex space-x-4 mt-4">
+          <!-- Facebook Icon -->
+          <a href="https://www.facebook.com/yourprofile" target="_blank" class="text-green-700 hover:text-blue-800">
+            <i class="fab fa-facebook-f w-6 h-6"></i>
+          </a>
+          <!-- Instagram Icon -->
+          <a href="https://www.instagram.com/yourprofile" target="_blank" class="text-green-700 hover:text-pink-800">
+            <i class="fab fa-instagram w-6 h-6"></i>
+          </a>
+          <!-- Twitter Icon -->
+          <a href="https://twitter.com/yourprofile" target="_blank" class="text-green-700 hover:text-blue-600">
+            <i class="fab fa-twitter w-6 h-6"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Booking Form -->
+      <div class="md:w-1/2 bg-white p-6 rounded shadow-lg">
+        <h2 class="text-3xl font-bold mb-4">Book Now</h2>
+        <form action="submit_booking.php" method="POST" class="space-y-4">
+          <div>
+            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+            <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded" required>
+          </div>
+          <div>
+            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+            <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded" required>
+          </div>
+          <div>
+            <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Phone</label>
+            <input type="tel" id="phone" name="phone" class="w-full p-2 border border-gray-300 rounded" required>
+          </div>
+          <div>
+            <label for="package" class="block text-gray-700 text-sm font-bold mb-2">Package</label>
+            <select id="package" name="package" class="w-full p-2 border border-gray-300 rounded" required>
+              <option value="hotel">Hotel Package</option>
+              <option value="airplane">Airplane Package</option>
+              <option value="food">Food Package</option>
+              <option value="photo">Photo-taking Package</option>
+            </select>
+          </div>
+          <div>
+            <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Date</label>
+            <input type="date" id="date" name="date" class="w-full p-2 border border-gray-300 rounded" required>
+          </div>
+          <div>
+            <label for="people" class="block text-gray-700 text-sm font-bold mb-2">Number of People</label>
+            <input type="number" id="people" name="people" class="w-full p-2 border border-gray-300 rounded" required>
+          </div>
+          <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded transition-colors duration-300 hover:bg-green-600">Book Now</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="mt-12">
+      <h2 class="text-3xl font-bold mb-4">Location</h2>
+      <div class="relative w-full h-64 shadow-lg rounded-lg overflow-hidden">
+        <iframe class="absolute inset-0 w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3483464388964!2d-122.08385108468182!3d37.38605177983186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb57b5e80e1cf%3A0x8c0634578c3390a7!2sGoogleplex!5e0!3m2!1sen!2sus!4v1633057493452!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="about-us" class="py-16 bg-gray-100">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center">
+      <!-- Image -->
+      <div class="md:w-1/2 mb-8 md:mb-0">
+        <img id="about-image" src="image/abay.png" alt="About Us" class="w-full h-auto rounded shadow-lg transition-opacity duration-1000 ease-in-out">
+      </div>
+      <!-- Text Content -->
+      <div class="md:w-1/2 md:pl-12 text-center md:text-left">
+        <h2 class="text-4xl font-bold mb-4 text-gray-800 opacity-0 transform translate-x-10 transition-all duration-700 ease-out">About- <span class="text-green-600">Us</span></h2>
+        <p class="text-lg text-gray-700 mb-4 opacity-0 transform translate-x-10 transition-all duration-700 ease-out delay-200">
+          Welcome to our company! We are dedicated to providing the best services in the industry. Our team of experts is passionate about delivering exceptional results and ensuring customer satisfaction. Join us on our journey to excellence.
+        </p>
+        <p class="text-lg text-gray-700 opacity-0 transform translate-x-10 transition-all duration-700 ease-out delay-400">
+          Our mission is to innovate and lead in our field, constantly striving to exceed expectations. We believe in the power of collaboration, integrity, and hard work. Thank you for choosing us!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <section id="footer" class="text-white bg-black p-8">
+    <div class="container">
+        <ul class="grid grid-cols-1 items-start gap-5 pd-5 md:grid-cols-2 lg:grid-cols-4 ">
+            <li>
+                <div class="space-y-3">
+                    <a href="" class="text-4xl font-oswald uppercase">ጉዞ <span class="text-green-500">Ethiopia</span></a>
+                    <p class="text-xs">Discover the beautiful landscapes, rich culture, and historic sites of Ethiopia</p>
+                </div>
+            </li>
+            <li>
+              <div class="flex flex-col gap-3">
+                <h3 class="text-lg uppercase font-oswald">Support</h3>
+                <a href="" class="text-xs hover:text-green-500">FAQ's</a>
+                <a href="" class="text-xs hover:text-green-500">Privacy</a>
+                <a href="" class="text-xs hover:text-green-500">Terms and condition</a>
+                <a href="" class="text-xs hover:text-green-500">Contact</a>
+              </div>  
+            </li>
+            <li class="space-y-8">
+                <div class="space-y-2">
+                    <h3 class="text-lg uppercase font-oswald">Phone</h3>
+                    <p class="flex items-center gap-2 text-xs"><i class="fa-solid fa-phone  text-green-500"></i>+251-9-309-024-80</p>
+                </div>
+            </li>
+            <li class="space-y-8">
+                <div class="space-y-2">
+                    <h3 class="text-lg uppercase font-oswald">email</h3>
+                    <p class="flex items-center gap-2 text-xs"><i class="fa-solid fa-envelop text-lg text-green-500" ></i>travel@guzoethiopia.com</p>
+                </div>
+            </li>
+            <li class="space-y-8">
+                <div class="space-y-2">
+                    <h3 class="text-lg uppercase font-oswald">address</h3>
+                    <p class="flex items-center gap-2 text-xs"><i class="fa-solid fa-location-dot text-lg text-green-500" ></i>22 Golagol tower</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-lg uppercase font-oswald">follow us</h3>
+                    <div class="space-x-3">
+                        <i class="fa-brands fa-facebook-f text-lg cursor-pointer text-green-500 hover:translate-y-1 ease-in duration-200"></i>
+                        <i class="fa-brands fa-twitter text-lg cursor-pointer text-green-500 hover:translate-y-1 ease-in duration-200"></i>
+                        <i class="fa-brands fa-square-instagram text-lg cursor-pointer text-green-500 hover:translate-y-1 ease-in duration-200"></i>
+                        <i class="fa-brands fa-facebook-f text-lg cursor-pointer text-green-500 hover:translate-y-1 ease-in duration-200"></i>
+                    </div>
+                </div>
+            </li> 
+        </ul>
+        <div class="flex flex-col items-center border-t border-primaryColorLight py-5 md:flex-row md:justify-between ">
+            <p class="paragraph">Designed by Grop 2</p>
+            <p class="paragraph">Copy right @2024. All right reserved.</p>
+        </div>
+    </div>
+</section>
+</footer>
+    
+    <script src="main.js"></script>
+</body>
+</html>
